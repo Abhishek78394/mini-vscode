@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+  body {
+    color: white;
+  }
+
+  #list {
+    color: rgb(254, 254, 254);
+    background: rgb(255, 255, 255);
+    font-size: 30px;
+
+  }
+
+  a {
+    color: rgb(248, 246, 246);
+    font-size: 1.6vw;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  li::before {
+    content: "\00BB";
+  }   
+
+  body {
+    overflow: hidden;
+  }
+</style>
+
+<body>
+  <div class="container-fluid alert bg-dark d-flex ">
+    <div class="left-penal w-25 bg-datrk">
+      <form action="/create" method="post">
+        <input class="w-100 pt-1 pb-1 alert alert-dark text-light" name="file" type="text"
+          placeholder="enter new file name">
+      </form>
+      <hr class="bg-light">
+      <ul class="list-group">
+        
+      <% filename.forEach(function(f){ %>
+        <li id="list" class="list-group-item bg-dark text-primary"><a href="/file/<%= f%>">
+            <%= f %>        </a>
+            | <a href="/delete/<%= f %>">  ❌ </a>  </li>
+        <%})%>
+      </ul>
+    </div>
+    <div class="right-penal w-75 ms-2">
+
+      <ul class="list-group ">
+
+        <li id="list" class="list-group-item bg-dark text-primary">
+          <a class="text-light" href="#">
+            <%= activefile %>`
+          </a>
+        </li>
+      </ul>
+
+      <form action="/save/<%= activefile%>" method="POST"> <textarea name="filedata" cols="153" rows="25"
+          placeholder="enter your data"><%= filedata %></textarea>
+        <button class="btn btn-primary  me-2">save</button>
+      </form>
+      </ul>
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>
